@@ -6,11 +6,11 @@ import { HISTORICAL_DATA } from './constants.ts';
 import { Intervention } from './types.ts';
 
 const App: React.FC = () => {
-  // Inicializamos en null para mostrar TODOS los conflictos al principio
+  // Estado inicial null para mostrar la vista GLOBAL (TODOS los eventos)
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
   const [selectedIntervention, setSelectedIntervention] = useState<Intervention | null>(null);
 
-  // Extraemos solo los años que tienen eventos para que el slider sea útil
+  // Mapeo de años únicos con eventos
   const availableYears = useMemo(() => {
     const years = new Set<number>();
     HISTORICAL_DATA.forEach(item => {
@@ -34,7 +34,6 @@ const App: React.FC = () => {
 
   return (
     <div className="relative w-full h-screen bg-slate-950 overflow-hidden flex flex-col font-sans">
-      {/* Header con diseño minimalista */}
       <header className="absolute top-0 left-0 right-0 z-20 p-6 md:p-10 flex flex-col gap-1 pointer-events-none">
         <h1 className="text-xl md:text-3xl font-black text-white tracking-tighter uppercase pointer-events-auto inline-block">
           <span className="bg-red-600 px-2 py-0.5 mr-1 italic">ATLAS</span> HISTÓRICO
@@ -44,7 +43,6 @@ const App: React.FC = () => {
         </p>
       </header>
 
-      {/* Mapa interactivo */}
       <main className="flex-1 w-full h-full relative">
         <WorldMap 
           data={HISTORICAL_DATA} 
@@ -54,10 +52,8 @@ const App: React.FC = () => {
         />
       </main>
 
-      {/* Controles flotantes */}
-      <footer className="absolute bottom-0 left-0 right-0 z-30 p-6 md:p-12 pointer-events-none flex flex-col items-center gap-6 pb-12 md:pb-16">
+      <footer className="absolute bottom-0 left-0 right-0 z-30 p-6 md:p-12 pointer-events-none flex flex-col items-center gap-6 pb-14 md:pb-16">
         
-        {/* Botón TODOS */}
         <div className="flex items-center gap-3 pointer-events-auto">
           <button 
             onClick={handleShowAll}
@@ -68,11 +64,10 @@ const App: React.FC = () => {
             }`}
           >
             <div className={`w-2 h-2 rounded-full ${selectedYear === null ? 'bg-white animate-pulse' : 'bg-slate-600'}`}></div>
-            VER TODOS LOS EVENTOS
+            TODOS LOS EVENTOS
           </button>
         </div>
 
-        {/* Slider de años con hitos */}
         <div className="max-w-xl w-full flex items-center gap-6 bg-slate-900/95 backdrop-blur-3xl p-5 md:p-7 rounded-[3.5rem] border border-white/5 shadow-[0_30px_60px_rgba(0,0,0,0.6)] pointer-events-auto">
           <div className="flex-1 flex flex-col gap-3">
             <input 
@@ -86,7 +81,7 @@ const App: React.FC = () => {
             />
             <div className="flex justify-between px-2">
                <span className="text-[9px] font-bold text-slate-600 tracking-widest">{availableYears[0]}</span>
-               <div className="text-[9px] font-bold text-red-500/50 uppercase tracking-[0.3em]">Desliza para explorar hitos</div>
+               <div className="text-[9px] font-bold text-red-500/50 uppercase tracking-[0.3em] text-center">Cronología Interactiva</div>
                <span className="text-[9px] font-bold text-slate-600 tracking-widest">{availableYears[availableYears.length - 1]}</span>
             </div>
           </div>
@@ -94,7 +89,7 @@ const App: React.FC = () => {
           <div className={`flex items-center justify-center min-w-[90px] h-12 md:h-14 px-5 rounded-2xl font-black text-base md:text-lg transition-all border-2 shadow-2xl ${
             selectedYear ? 'bg-red-600 text-white border-red-500' : 'bg-slate-950 text-slate-800 border-slate-900'
           }`}>
-            {selectedYear || 'GLO'}
+            {selectedYear || 'GLOBAL'}
           </div>
         </div>
       </footer>

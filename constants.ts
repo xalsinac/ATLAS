@@ -2,112 +2,59 @@
 import { Intervention } from './types';
 
 export const HISTORICAL_DATA: Intervention[] = [
-  { 
-    id: "gt-1954",
-    country: "Guatemala", 
-    years: [1954], 
-    type: 'operation', 
-    description: "Operación PBSUCCESS: Invasión armada y bombardeos organizados por la CIA.",
-    expandedDescription: "Tras la expropiación de tierras a la United Fruit Company por parte de Jacobo Árbenz, la CIA organizó una fuerza de invasión apoyada por una campaña de bombardeos psicológicos. Aviones P-47 atacaron depósitos de combustible y la capital, resultando en un golpe que instauró décadas de dictaduras militares y un genocidio que costó la vida a más de 200,000 personas.",
-    coordinates: [15.78, -90.23] 
-  },
-  { 
-    id: "br-1964",
-    country: "Brasil", 
-    years: [1964], 
-    type: 'coup', 
-    description: "Operación Brother Sam: Apoyo naval y logístico al golpe militar.",
-    expandedDescription: "Envío coordinado de una flota de portaaviones y destructores para asegurar el éxito del golpe contra João Goulart. Esta intervención aseguró una dictadura de 21 años que implementó el 'milagro económico' a costa de la supresión total de derechos civiles y la persecución sistemática de opositores bajo la tutela de asesores estadounidenses.",
-    coordinates: [-14.23, -51.92] 
-  },
-  { 
-    id: "rd-1965",
-    country: "República Dominicana", 
-    years: [1965], 
-    type: 'operation', 
-    description: "Operación Power Pack: Invasión de 42,000 marines contra la revolución.",
-    expandedDescription: "La mayor intervención militar en el hemisferio occidental desde el siglo XIX. 42,000 efectivos desembarcaron para sofocar el levantamiento popular que buscaba restaurar al presidente constitucional Juan Bosch. La ocupación duró más de un año y aseguró la llegada al poder de Joaquín Balaguer.",
-    coordinates: [18.73, -70.16] 
-  },
-  { 
-    id: "cl-1973",
-    country: "Chile", 
-    years: [1973], 
-    type: 'coup', 
-    description: "Golpe del 11 de Septiembre: Desestabilización total y apoyo a Pinochet.",
-    expandedDescription: "Tras años de 'hacer chillar la economía' (orden directa de Nixon), la CIA apoyó activamente el bombardeo de La Moneda. Esta intervención no solo eliminó a Salvador Allende, sino que convirtió a Chile en el primer experimento mundial del neoliberalismo monetarista, acompañado de una represión sangrienta coordinada mediante el Plan Cóndor.",
-    coordinates: [-35.67, -71.54] 
-  },
-  { 
-    id: "ar-1976",
-    country: "Argentina", 
-    years: [1976, 2024, 2025], 
-    type: 'coup', 
-    description: "Apoyo a la Junta Militar y presiones contemporáneas sobre recursos.",
-    expandedDescription: "1976: Henry Kissinger dio luz verde al golpe que inició el Proceso de Reorganización Nacional, responsable de 30,000 desaparecidos. 2024-2025: La intervención se ha transformado en presiones financieras extremas y control logístico sobre el litio y el paso bioceánico, condicionando la soberanía económica mediante mecanismos de deuda y presencia militar en el Atlántico Sur.",
-    coordinates: [-38.41, -63.61] 
-  },
-  { 
-    id: "pa-1989",
-    country: "Panamá", 
-    years: [1989], 
-    type: 'operation', 
-    description: "Operación Causa Justa: Bombardeos masivos e invasión de la ciudad.",
-    expandedDescription: "Invasión masiva para capturar a Manuel Noriega, un antiguo colaborador de la CIA caído en desgracia. El uso desproporcionado de tecnología militar moderna contra el barrio popular de El Chorrillo causó un número indeterminado de víctimas civiles (estimadas en miles) y la destrucción total de infraestructuras clave.",
-    coordinates: [8.53, -80.78] 
-  },
-  { 
-    id: "vn-1963",
-    country: "Vietnam", 
-    years: [1963, 1968, 1973], 
-    type: 'operation', 
-    description: "Invasión total: Se lanzaron más bombas que en toda la 2ª Guerra Mundial.",
-    expandedDescription: "Guerra caracterizada por el uso sistemático de Napalm y Agente Naranja para destruir la selva y las fuentes de alimento. Los bombardeos de saturación sobre ciudades y zonas rurales dejaron un legado de malformaciones genéticas y tierras baldías que persiste medio siglo después de la retirada estadounidense.",
-    coordinates: [14.05, 108.27] 
-  },
-  { 
-    id: "la-1964",
-    country: "Laos", 
-    years: [1964, 1965, 1973], 
-    type: 'operation', 
-    description: "La 'Guerra Secreta': El país más bombardeado per cápita de la historia.",
-    expandedDescription: "EE.UU. lanzó más de 270 millones de bombas de racimo sobre Laos durante una década. El objetivo era cortar la Ruta Ho Chi Minh. Se estima que el 30% de las bombas no explotaron al impactar, convirtiendo vastas extensiones de tierra fértil en campos de muerte permanente para los agricultores actuales.",
-    coordinates: [19.85, 102.49] 
-  },
-  { 
-    id: "ir-1953",
-    country: "Irán", 
-    years: [1953, 1988, 2025], 
-    type: 'coup', 
-    description: "Operación Ajax: Derrocamiento de Mossadegh por el control petrolero.",
-    expandedDescription: "1953: Primer gran éxito de la CIA en el extranjero para deponer a un líder electo que nacionalizó el petróleo. 2025: Escalada de guerra híbrida con ataques cibernéticos masivos contra la infraestructura civil y bombardeos selectivos de precisión sobre instalaciones de investigación, alterando la estabilidad de todo Oriente Medio.",
-    coordinates: [32.42, 53.68] 
-  },
-  { 
-    id: "ly-2011",
-    country: "Libia", 
-    years: [1986, 2011], 
-    type: 'operation', 
-    description: "Operación Odyssey Dawn: Destrucción del estado libio y caos posterior.",
-    expandedDescription: "Campaña aérea de la OTAN liderada por EE.UU. que desmanteló la estructura militar y estatal de Libia bajo el pretexto de proteger a civiles. El resultado fue un estado fallido, el regreso de mercados de esclavos y la desestabilización de toda la región del Sahel.",
-    coordinates: [26.33, 17.22] 
-  },
-  { 
-    id: "ye-2015",
-    country: "Yemen", 
-    years: [2015, 2025], 
-    type: 'operation', 
-    description: "Apoyo logístico y bombardeos tácticos en la mayor crisis humanitaria.",
-    expandedDescription: "Participación directa e indirecta en el bloqueo y bombardeo de Yemen. 2025: Intensificación de ataques contra puertos vitales y redes de comunicación, exacerbando la hambruna y el colapso sanitario en un conflicto que ha costado cientos de miles de vidas evitables.",
-    coordinates: [15.55, 48.51] 
-  },
-  { 
-    id: "ps-2023",
-    country: "Palestina (Gaza)", 
-    years: [2023, 2024, 2025], 
-    type: 'operation', 
-    description: "Sustento militar crítico y despliegue de infraestructuras tácticas.",
-    expandedDescription: "Suministro ininterrumpido de munición pesada (bombas de 2000lb), apoyo de inteligencia en tiempo real y despliegue de infraestructuras como el puerto temporal JLOTS. Esta intervención es determinante para la continuidad de la ofensiva que ha devastado la totalidad de la infraestructura civil en la Franja.",
-    coordinates: [31.35, 34.30] 
-  }
+  // LATINOAMÉRICA - EL SIGLO DE LAS INTERVENCIONES
+  { id: "ar-1890", country: "Argentina", years: [1890], type: 'operation', description: "Intervención naval en Buenos Aires.", expandedDescription: "Envío de tropas navales para proteger intereses comerciales estadounidenses durante la Revolución del Parque.", coordinates: [-34.60, -58.38] },
+  { id: "cl-1891", country: "Chile", years: [1891], type: 'operation', description: "Incidente del USS Baltimore.", expandedDescription: "Intervención tras la guerra civil chilena para asegurar la hegemonía regional frente a la influencia británica.", coordinates: [-33.04, -71.61] },
+  { id: "pr-1898", country: "Puerto Rico", years: [1898], type: 'operation', description: "Invasión y anexión.", expandedDescription: "Desembarco de tropas durante la Guerra Hispano-Estadounidense, convirtiendo la isla en un territorio no incorporado hasta la actualidad.", coordinates: [18.22, -66.59] },
+  { id: "cu-1898", country: "Cuba", years: [1898, 1906, 1912, 1917, 1933], type: 'operation', description: "Enmienda Platt y sucesivas ocupaciones.", expandedDescription: "Intervenciones militares constantes para asegurar el control político y económico de la isla antes de la revolución.", coordinates: [21.52, -77.78] },
+  { id: "pa-1903", country: "Panamá", years: [1903], type: 'operation', description: "Secesión de Colombia y control del Canal.", expandedDescription: "Apoyo naval para forzar la independencia de Panamá y asegurar la concesión perpetua de la Zona del Canal.", coordinates: [8.98, -79.51] },
+  { id: "ni-1912", country: "Nicaragua", years: [1912, 1926, 1933], type: 'operation', description: "Guerra de las Bananas y ocupación prolongada.", expandedDescription: "Ocupación militar de 20 años para proteger inversiones fruteras y bancarias, enfrentando la resistencia de Sandino.", coordinates: [12.86, -85.20] },
+  { id: "mx-1914", country: "México", years: [1914, 1916], type: 'operation', description: "Ocupación de Veracruz y Expedición Punitiva.", expandedDescription: "Bombardeo y ocupación de Veracruz para interceptar armas y persecución de Pancho Villa en territorio soberano.", coordinates: [19.17, -96.13] },
+  { id: "ht-1915", country: "Haití", years: [1915, 1916, 1934], type: 'operation', description: "Ocupación militar de 19 años.", expandedDescription: "Control total de las finanzas y la política haitiana mediante la ley marcial para asegurar el pago de deudas externas.", coordinates: [18.97, -72.28] },
+  { id: "rd-1916", country: "Rep. Dominicana", years: [1916, 1917, 1924], type: 'operation', description: "Primera ocupación militar prolongada.", expandedDescription: "Establecimiento de una administración militar estadounidense que controló las aduanas y la seguridad interna del país.", coordinates: [18.73, -70.16] },
+  { id: "gt-1954", country: "Guatemala", years: [1954], type: 'operation', description: "Op. PBSUCCESS contra Jacobo Árbenz.", expandedDescription: "Bombardeos de la CIA sobre la capital para derrocar un gobierno que nacionalizó tierras de la United Fruit Company.", coordinates: [15.78, -90.23] },
+  { id: "br-1964", country: "Brasil", years: [1964], type: 'coup', description: "Op. Brother Sam contra João Goulart.", expandedDescription: "Apoyo logístico y naval al golpe militar que instauró una dictadura de 21 años enfocada en la represión interna.", coordinates: [-14.23, -51.92] },
+  { id: "rd-1965", country: "Rep. Dominicana", years: [1965], type: 'operation', description: "Op. Power Pack: Invasión de 42,000 marines.", expandedDescription: "Intervención masiva para detener el retorno del presidente constitucional Juan Bosch y frenar la revolución popular.", coordinates: [18.73, -70.16] },
+  { id: "cl-1973", country: "Chile", years: [1973], type: 'coup', description: "Golpe contra Allende y Plan Cóndor.", expandedDescription: "Apoyo de la CIA al bombardeo de La Moneda e instauración del régimen de Pinochet para ensayar el neoliberalismo.", coordinates: [-35.67, -71.54] },
+  { id: "ar-1976", country: "Argentina", years: [1976], type: 'coup', description: "Apoyo a la Junta Militar de Videla.", expandedDescription: "Kissinger dio 'luz verde' a la represión que resultó en 30,000 desaparecidos bajo la lógica de la Guerra Fría.", coordinates: [-38.41, -63.61] },
+  { id: "gd-1983", country: "Granada", years: [1983], type: 'operation', description: "Op. Furia Urgente: Invasión directa.", expandedDescription: "Invasión para derrocar al gobierno revolucionario tras el asesinato de Maurice Bishop.", coordinates: [12.11, -61.67] },
+  { id: "pa-1989", country: "Panamá", years: [1989], type: 'operation', description: "Op. Causa Justa: Bombardeo de El Chorrillo.", expandedDescription: "Invasión masiva para capturar a Noriega, destruyendo barrios populares con miles de víctimas civiles.", coordinates: [8.53, -80.78] },
+  { id: "ve-2002", country: "Venezuela", years: [2002], type: 'coup', description: "Apoyo al golpe breve contra Chávez.", expandedDescription: "Respaldo mediático y diplomático al gobierno de facto de Carmona Estanga durante el fallido golpe de 48 horas.", coordinates: [10.48, -66.90] },
+  { id: "bo-2019", country: "Bolivia", years: [2019], type: 'coup', description: "Golpe contra Evo Morales y crisis del Litio.", expandedDescription: "Uso de la OEA para forzar la salida de Morales y asegurar el control de las reservas estratégicas de litio.", coordinates: [-16.29, -63.58] },
+
+  // ASIA Y OCEANÍA
+  { id: "hi-1893", country: "Hawái", years: [1893], type: 'operation', description: "Derrocamiento de la monarquía hawaiana.", expandedDescription: "Tropas navales apoyaron a empresarios azucareros para anexionar las islas y establecer bases estratégicas.", coordinates: [21.30, -157.85] },
+  { id: "ph-1899", country: "Filipinas", years: [1899, 1900, 1901, 1902], type: 'operation', description: "Guerra de ocupación colonial.", expandedDescription: "Masacres masivas tras la independencia de España para establecer a Filipinas como colonia estadounidense en Asia.", coordinates: [12.87, 121.77] },
+  { id: "cn-1900", country: "China", years: [1900, 1901], type: 'operation', description: "Rebelión de los Bóxers.", expandedDescription: "Intervención de la Alianza de las Ocho Naciones para proteger intereses comerciales extranjeros en Pekín.", coordinates: [39.90, 116.40] },
+  { id: "jp-1945", country: "Japón", years: [1945], type: 'operation', description: "Bombardeos atómicos sobre población civil.", expandedDescription: "Hiroshima y Nagasaki: primer y único uso de armas nucleares contra humanos como demostración de fuerza geopolítica.", coordinates: [36.20, 138.25] },
+  { id: "kr-1950", country: "Corea", years: [1950, 1951, 1952, 1953], type: 'operation', description: "Guerra de Corea: Bombardeos de saturación.", expandedDescription: "Destrucción de casi todas las infraestructuras del norte y división permanente de la península en el paralelo 38.", coordinates: [38.33, 127.23] },
+  { id: "id-1958", country: "Indonesia", years: [1958, 1965], type: 'coup', description: "Op. Haik y purgas masivas de Suharto.", expandedDescription: "CIA suministró listas de ejecución en 1965 para eliminar a un millón de comunistas tras el golpe contra Sukarno.", coordinates: [-0.78, 113.92] },
+  { id: "vn-1964", country: "Vietnam", years: [1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973], type: 'operation', description: "Guerra de Vietnam: Napalm y Agente Naranja.", expandedDescription: "Bombardeos masivos de selvas y poblaciones, lanzando más explosivos que en toda la Segunda Guerra Mundial.", coordinates: [14.05, 108.27] },
+  { id: "la-1964", country: "Laos", years: [1964, 1965, 1966, 1967, 1968, 1969, 1970, 1971, 1972, 1973], type: 'operation', description: "La 'Guerra Secreta': El país más bombardeado.", expandedDescription: "270 millones de bombas de racimo lanzadas para cortar la Ruta Ho Chi Minh, dejando un legado mortal persistente.", coordinates: [19.85, 102.49] },
+  { id: "kh-1969", country: "Camboya", years: [1969, 1970, 1973], type: 'operation', description: "Op. Menu: Bombardeos ilegales masivos.", expandedDescription: "Campaña aérea secreta que desestabilizó al país y facilitó el ascenso de los Jemeres Rojos.", coordinates: [12.56, 104.99] },
+  { id: "af-1979", country: "Afganistán", years: [1979, 1980, 1985, 1989], type: 'operation', description: "Op. Ciclón: Apoyo a muyahidines.", expandedDescription: "Financiamiento de grupos radicales para desgastar a la URSS, germen de futuros conflictos extremistas.", coordinates: [33.93, 67.71] },
+  { id: "af-2001", country: "Afganistán", years: [2001, 2005, 2010, 2015, 2021], type: 'operation', description: "Invasión post-11S y ocupación de 20 años.", expandedDescription: "Guerra prolongada que terminó en la retirada de 2021 y el retorno inmediato de los talibanes.", coordinates: [34.55, 69.17] },
+
+  // ORIENTE MEDIO Y ÁFRICA
+  { id: "ir-1953", country: "Irán", years: [1953], type: 'coup', description: "Op. Ajax: Derrocamiento de Mossadegh.", expandedDescription: "CIA eliminó al líder democrático por nacionalizar el petróleo, instaurando la dictadura del Sah.", coordinates: [32.42, 53.68] },
+  { id: "eg-1956", country: "Egipto", years: [1956], type: 'operation', description: "Crisis de Suez: Presión geopolítica.", expandedDescription: "Intervención diplomática y militar encubierta para controlar el flujo energético mundial.", coordinates: [26.82, 30.80] },
+  { id: "lb-1958", country: "Líbano", years: [1958, 1982, 1983, 1984], type: 'operation', description: "Despliegues constantes de Marines.", expandedDescription: "Intervenciones para sostener gobiernos afines y frenar el nacionalismo árabe en la región.", coordinates: [33.85, 35.86] },
+  { id: "cd-1960", country: "Congo (RDC)", years: [1960, 1961], type: 'coup', description: "Asesinato de Patrice Lumumba.", expandedDescription: "CIA colaboró con Bélgica para ejecutar al líder independentista y asegurar minas de uranio.", coordinates: [-4.03, 21.75] },
+  { id: "iq-1963", country: "Irak", years: [1963], type: 'coup', description: "Apoyo al golpe del partido Baaz.", expandedDescription: "CIA facilitó listas de comunistas para purga masiva, consolidando la llegada de Saddam Hussein al poder años después.", coordinates: [33.31, 44.36] },
+  { id: "ly-1981", country: "Libia", years: [1981, 1986], type: 'operation', description: "Bombardeos de Trípoli y Bengasi.", expandedDescription: "Ataques aéreos ordenados por Reagan para eliminar a Gadafi bajo acusaciones de terrorismo.", coordinates: [32.88, 13.19] },
+  { id: "iq-1991", country: "Irak", years: [1991], type: 'operation', description: "Op. Tormenta del Desierto.", expandedDescription: "Bombardeos masivos de infraestructuras iraquíes y uso de uranio empobrecido en Kuwait e Irak.", coordinates: [33.22, 43.67] },
+  { id: "so-1993", country: "Somalia", years: [1993, 1994, 2025], type: 'operation', description: "Op. Restore Hope y guerra de drones.", expandedDescription: "Intervención militar directa fallida y actual campaña permanente de ataques aéreos silenciosos.", coordinates: [5.15, 46.19] },
+  { id: "sd-1998", country: "Sudán", years: [1998], type: 'operation', description: "Bombardeo de la fábrica Al-Shifa.", expandedDescription: "Clinton ordenó destruir la mayor productora de medicinas del país alegando falsamente que fabricaba gas nervioso.", coordinates: [15.50, 32.55] },
+  { id: "iq-2003", country: "Irak", years: [2003, 2004, 2005, 2011], type: 'operation', description: "Invasión ilegal basada en premisas falsas.", expandedDescription: "Destrucción del estado iraquí bajo el pretexto inexistente de armas de destrucción masiva.", coordinates: [33.22, 43.67] },
+  { id: "ly-2011", country: "Libia", years: [2011], type: 'operation', description: "Op. Odyssey Dawn: Destrucción de la Jamahiriya.", expandedDescription: "Bombardeos de la OTAN que convirtieron al país más próspero de África en un estado fallido.", coordinates: [26.33, 17.22] },
+  { id: "ye-2015", country: "Yemen", years: [2015, 2016, 2017, 2025], type: 'operation', description: "Apoyo al bloqueo y bombardeos directos.", expandedDescription: "Colaboración crítica en una guerra que ha generado la mayor hambruna del siglo.", coordinates: [15.55, 48.51] },
+  { id: "ps-2023", country: "Palestina", years: [2023, 2024, 2025], type: 'operation', description: "Soporte táctico y armamentístico masivo.", expandedDescription: "Suministro de bombas de alta potencia y apoyo de inteligencia determinante en la ofensiva sobre Gaza.", coordinates: [31.50, 34.46] },
+
+  // EUROPA
+  { id: "de-1945", country: "Alemania", years: [1945], type: 'operation', description: "Ocupación y Operación Paperclip.", expandedDescription: "Reclutamiento secreto de científicos nazis para programas militares de EE.UU. tras la guerra.", coordinates: [51.16, 10.45] },
+  { id: "gr-1947", country: "Grecia", years: [1947, 1948, 1949], type: 'operation', description: "Doctrina Truman: Intervención en guerra civil.", expandedDescription: "Apoyo masivo a fuerzas monárquicas para evitar el avance de partisanos comunistas.", coordinates: [39.07, 21.82] },
+  { id: "it-1948", country: "Italia", years: [1948], type: 'coup', description: "Intervención electoral masiva.", expandedDescription: "CIA financió y manipuló elecciones para evitar la victoria del Frente Popular Democrático.", coordinates: [41.87, 12.56] },
+  { id: "gr-1967", country: "Grecia", years: [1967], type: 'coup', description: "Golpe de los Coroneles apoyado por CIA.", expandedDescription: "Instauración de una junta militar terrorista para frenar la democratización del país.", coordinates: [39.07, 21.82] },
+  { id: "yu-1995", country: "Yugoslavia", years: [1995, 1999], type: 'operation', description: "Bombardeos de la OTAN.", expandedDescription: "78 días de ataques aéreos ilegales que fragmentaron el país y destruyeron infraestructuras civiles.", coordinates: [44.01, 21.00] },
+  { id: "ua-2014", country: "Ucrania", years: [2014], type: 'coup', description: "Apoyo al cambio de régimen en el Maidán.", expandedDescription: "Intervención política y financiera para deponer al gobierno y orientar el país hacia la OTAN.", coordinates: [50.45, 30.52] }
 ];
