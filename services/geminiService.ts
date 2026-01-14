@@ -2,16 +2,25 @@
 import { GoogleGenAI } from "@google/genai";
 
 const getAIClient = () => {
-  const apiKey = process.env.API_KEY;
-  if (!apiKey) return null;
-  return new GoogleGenAI({ apiKey });
+  try {
+    // Comprobación segura de variable de entorno para evitar crasheos en GitHub Pages
+    // @ts-ignore
+    const apiKey = typeof process !== 'undefined' && process.env ? process.env.API_KEY : null;
+    
+    if (!apiKey) {
+      console.warn("API_KEY no configurada.");
+      return null;
+    }
+    return new GoogleGenAI({ apiKey });
+  } catch (e) {
+    return null;
+  }
 };
 
 export async function getHistoricalAnalysis(country: string, context: string) {
   const ai = getAIClient();
   if (!ai) {
-    console.warn("API_KEY no detectada. Asegúrate de que las variables de entorno estén configuradas.");
-    return "El análisis por IA requiere una clave de API configurada.";
+    return "El análisis por IA requiere una clave de API configurada en las variables de entorno.";
   }
 
   try {
@@ -23,9 +32,9 @@ export async function getHistoricalAnalysis(country: string, context: string) {
         topP: 0.95,
       }
     });
-    return response.text;
+    return response.text || "No se pudo generar el texto.";
   } catch (error) {
     console.error("Error fetching analysis:", error);
-    return "No se pudo obtener el análisis en este momento debido a un error en el servicio.";
+    return "No se pudo obtener el análisis en este momento.";
   }
 }

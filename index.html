@@ -7,7 +7,7 @@
   <title>Atlas Histórico - Intervenciones</title>
   
   <!-- SEO & PWA Meta Tags -->
-  <meta name="theme-color" content="#020617">
+  <meta name="theme-color" content="#dc2626">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Atlas Histórico">
@@ -34,7 +34,7 @@
       padding: 0;
       height: 100%;
       width: 100%;
-      position: fixed; /* Evita scrolls fantasma en móvil */
+      position: fixed;
     }
     #root {
       height: 100vh;
@@ -61,7 +61,16 @@
 </head>
 <body>
   <div id="root"></div>
-  <!-- Importante: Usamos ruta relativa para GitHub Pages -->
   <script type="module" src="./index.tsx"></script>
+  <script>
+    // Registro de Service Worker para permitir instalación en Android
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(err => {
+          console.log('SW registration failed: ', err);
+        });
+      });
+    }
+  </script>
 </body>
 </html>
