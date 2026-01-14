@@ -1,5 +1,5 @@
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import WorldMap from './components/WorldMap.tsx';
 import InterventionCard from './components/InterventionCard.tsx';
 import { HISTORICAL_DATA } from './constants.ts';
@@ -9,6 +9,7 @@ const App: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
   const [selectedIntervention, setSelectedIntervention] = useState<Intervention | null>(null);
 
+  // Extraemos solo los años que tienen eventos
   const availableYears = useMemo(() => {
     const years = new Set<number>();
     HISTORICAL_DATA.forEach(item => {
@@ -50,21 +51,23 @@ const App: React.FC = () => {
         />
       </main>
 
-      <footer className="absolute bottom-0 left-0 right-0 z-30 p-6 md:p-12 pointer-events-none flex flex-col items-center gap-6">
+      <footer className="absolute bottom-0 left-0 right-0 z-30 p-6 md:p-12 pointer-events-none flex flex-col items-center gap-6 pb-10 md:pb-12">
         
-        <button 
-          onClick={handleShowAll}
-          className={`pointer-events-auto px-8 py-3 rounded-full font-black text-[10px] md:text-xs transition-all shadow-2xl tracking-[0.15em] border-2 flex items-center gap-3 backdrop-blur-xl ${
-            selectedYear === null 
-              ? 'bg-red-600 text-white border-red-500' 
-              : 'bg-slate-900/90 text-slate-300 border-slate-700 hover:border-slate-500'
-          }`}
-        >
-          <div className={`w-2 h-2 rounded-full ${selectedYear === null ? 'bg-white animate-pulse' : 'bg-slate-500'}`}></div>
-          {selectedYear === null ? 'VISUALIZANDO TODO' : 'VER TODOS LOS EVENTOS'}
-        </button>
+        <div className="flex items-center gap-3 pointer-events-auto">
+          <button 
+            onClick={handleShowAll}
+            className={`px-8 py-3 rounded-full font-black text-[10px] md:text-xs transition-all shadow-2xl tracking-[0.15em] border-2 flex items-center gap-3 backdrop-blur-xl ${
+              selectedYear === null 
+                ? 'bg-red-600 text-white border-red-500' 
+                : 'bg-slate-900/90 text-slate-300 border-slate-700 hover:border-slate-500'
+            }`}
+          >
+            <div className={`w-2 h-2 rounded-full ${selectedYear === null ? 'bg-white animate-pulse' : 'bg-slate-500'}`}></div>
+            TODOS
+          </button>
+        </div>
 
-        <div className="max-w-2xl w-full flex items-center gap-5 bg-slate-900/95 backdrop-blur-3xl p-5 md:p-6 rounded-[3rem] border border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] pointer-events-auto">
+        <div className="max-w-2xl w-full flex items-center gap-4 bg-slate-900/95 backdrop-blur-3xl p-4 md:p-6 rounded-[3rem] border border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] pointer-events-auto">
           <div className="flex-1 flex flex-col gap-2">
             <input 
               type="range"
@@ -81,10 +84,10 @@ const App: React.FC = () => {
             </div>
           </div>
           
-          <div className={`flex items-center justify-center min-w-[70px] h-10 md:h-12 px-4 rounded-2xl font-black text-sm md:text-base transition-all border shadow-inner ${
+          <div className={`flex items-center justify-center min-w-[80px] h-10 md:h-12 px-4 rounded-2xl font-black text-sm md:text-base transition-all border shadow-inner ${
             selectedYear ? 'bg-red-600 text-white border-red-500' : 'bg-slate-950 text-slate-700 border-slate-800'
           }`}>
-            {selectedYear || 'TODO'}
+            {selectedYear || 'GLOBAL'}
           </div>
         </div>
       </footer>

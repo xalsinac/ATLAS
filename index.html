@@ -6,20 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
   <title>Atlas Histórico - Intervenciones</title>
   
-  <!-- SEO & PWA Meta Tags -->
   <meta name="theme-color" content="#020617">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Atlas Histórico">
   
-  <!-- Icons for Android & iOS -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23dc2626%22/><text y=%22.95em%22 x=%2250%%22 font-size=%2265%22 text-anchor=%22middle%22 font-family=%22serif%22 font-weight=%22bold%22 fill=%22white%22 italic=%22true%22>A</text></svg>">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23dc2626%22/><text y=%22.95em%22 x=%2250%%22 font-size=%2265%22 text-anchor=%22middle%22 font-family=%22serif%22 font-weight=%22bold%22 fill=%22white%22 italic=%22true%22>A</text></svg>">
-  
   <link rel="manifest" href="./manifest.json">
 
-  <!-- Scripts Externos -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
   
@@ -40,7 +34,6 @@
       position: fixed;
     }
     #root { height: 100vh; width: 100vw; }
-    * { -webkit-tap-highlight-color: transparent; outline: none; }
   </style>
 
   <script type="importmap">
@@ -60,14 +53,32 @@
 <body>
   <div id="root"></div>
   
-  <!-- Cargamos mediante Babel para saltar las restricciones de MIME Type de GitHub Pages -->
-  <script type="text/babel" data-presets="react,typescript" data-type="module" src="./index.tsx"></script>
-
   <script>
+    // Primero registramos el Service Worker y esperamos a que esté activo
     if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW error:', err));
+      navigator.serviceWorker.register('./sw.js').then(registration => {
+        console.log('SW Registered');
+        // Si el SW no está controlando la página, recargamos para que tome el control
+        if (!navigator.serviceWorker.controller) {
+          window.location.reload();
+        } else {
+          loadApp();
+        }
+      }).catch(err => {
+        console.error('SW registration failed:', err);
+        loadApp(); // Intentar cargar de todos modos
       });
+    } else {
+      loadApp();
+    }
+
+    function loadApp() {
+      const script = document.createElement('script');
+      script.type = 'text/babel';
+      script.setAttribute('data-presets', 'react,typescript');
+      script.setAttribute('data-type', 'module');
+      script.src = './index.tsx';
+      document.body.appendChild(script);
     }
   </script>
 </body>
