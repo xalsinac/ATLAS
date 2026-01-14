@@ -7,19 +7,22 @@
   <title>Atlas Histórico - Intervenciones</title>
   
   <!-- SEO & PWA Meta Tags -->
-  <meta name="theme-color" content="#dc2626">
+  <meta name="theme-color" content="#020617">
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Atlas Histórico">
   
-  <!-- Icons -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23dc2626%22/><text y=%22.9em%22 x=%2250%%22 font-size=%2260%22 text-anchor=%22middle%22 font-family=%22serif%22 font-weight=%22bold%22 fill=%22white%22 italic=%22true%22>A</text></svg>">
-  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23dc2626%22/><text y=%22.9em%22 x=%2250%%22 font-size=%2260%22 text-anchor=%22middle%22 font-family=%22serif%22 font-weight=%22bold%22 fill=%22white%22 italic=%22true%22>A</text></svg>">
+  <!-- Icons for Android & iOS -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23dc2626%22/><text y=%22.95em%22 x=%2250%%22 font-size=%2265%22 text-anchor=%22middle%22 font-family=%22serif%22 font-weight=%22bold%22 fill=%22white%22 italic=%22true%22>A</text></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%23dc2626%22/><text y=%22.95em%22 x=%2250%%22 font-size=%2265%22 text-anchor=%22middle%22 font-family=%22serif%22 font-weight=%22bold%22 fill=%22white%22 italic=%22true%22>A</text></svg>">
   
-  <!-- Manifest for PWA -->
   <link rel="manifest" href="./manifest.json">
 
+  <!-- Scripts Externos -->
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
@@ -36,14 +39,8 @@
       width: 100%;
       position: fixed;
     }
-    #root {
-      height: 100vh;
-      width: 100vw;
-    }
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: transparent; }
-    ::-webkit-scrollbar-thumb { background: #334155; border-radius: 10px; }
-    * { -webkit-tap-highlight-color: transparent; }
+    #root { height: 100vh; width: 100vw; }
+    * { -webkit-tap-highlight-color: transparent; outline: none; }
   </style>
 
   <script type="importmap">
@@ -52,6 +49,7 @@
       "react": "https://esm.sh/react@^19.2.3",
       "react/": "https://esm.sh/react@^19.2.3/",
       "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+      "react-dom/client": "https://esm.sh/react-dom@^19.2.3/client",
       "@google/genai": "https://esm.sh/@google/genai@^1.35.0",
       "d3": "https://esm.sh/d3@^7.9.0",
       "topojson-client": "https://esm.sh/topojson-client@^3.1.0"
@@ -61,14 +59,14 @@
 </head>
 <body>
   <div id="root"></div>
-  <script type="module" src="./index.tsx"></script>
+  
+  <!-- Cargamos mediante Babel para saltar las restricciones de MIME Type de GitHub Pages -->
+  <script type="text/babel" data-presets="react,typescript" data-type="module" src="./index.tsx"></script>
+
   <script>
-    // Registro de Service Worker para permitir instalación en Android
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js').catch(err => {
-          console.log('SW registration failed: ', err);
-        });
+        navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW error:', err));
       });
     }
   </script>

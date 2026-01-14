@@ -1,9 +1,9 @@
 
 import React, { useState, useMemo } from 'react';
-import WorldMap from './components/WorldMap';
-import InterventionCard from './components/InterventionCard';
-import { HISTORICAL_DATA } from './constants';
-import { Intervention } from './types';
+import WorldMap from './components/WorldMap.tsx';
+import InterventionCard from './components/InterventionCard.tsx';
+import { HISTORICAL_DATA } from './constants.ts';
+import { Intervention } from './types.ts';
 
 const App: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState<number | null>(null);
@@ -52,7 +52,6 @@ const App: React.FC = () => {
 
       <footer className="absolute bottom-0 left-0 right-0 z-30 p-6 md:p-12 pointer-events-none flex flex-col items-center gap-6">
         
-        {/* Botón Flotante Moderno */}
         <button 
           onClick={handleShowAll}
           className={`pointer-events-auto px-8 py-3 rounded-full font-black text-[10px] md:text-xs transition-all shadow-2xl tracking-[0.15em] border-2 flex items-center gap-3 backdrop-blur-xl ${
@@ -65,7 +64,6 @@ const App: React.FC = () => {
           {selectedYear === null ? 'VISUALIZANDO TODO' : 'VER TODOS LOS EVENTOS'}
         </button>
 
-        {/* Slider de Tiempo Estilizado */}
         <div className="max-w-2xl w-full flex items-center gap-5 bg-slate-900/95 backdrop-blur-3xl p-5 md:p-6 rounded-[3rem] border border-white/5 shadow-[0_20px_50px_rgba(0,0,0,0.5)] pointer-events-auto">
           <div className="flex-1 flex flex-col gap-2">
             <input 
