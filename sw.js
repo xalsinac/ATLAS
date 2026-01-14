@@ -1,7 +1,6 @@
 
-const CACHE_NAME = 'atlas-cache-v2';
+const CACHE_NAME = 'atlas-v3';
 
-// Instalación inmediata
 self.addEventListener('install', (event) => {
   self.skipWaiting();
 });
@@ -10,34 +9,28 @@ self.addEventListener('activate', (event) => {
   event.waitUntil(clients.claim());
 });
 
-// Interceptor de peticiones
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
-  
-  // Si pedimos un archivo .tsx, forzamos el tipo MIME a javascript
-  // Esto soluciona el error application/octet-stream de GitHub Pages
-  if (url.pathname.endsWith('.tsx') || url.pathname.endsWith('.ts')) {
+  const isLocalSource = url.origin === self.location.origin && 
+                        (url.pathname.endsWith('.tsx') || url.pathname.endsWith('.ts'));
+
+  if (isLocalSource) {
     event.respondWith(
       fetch(event.request)
         .then(response => {
           if (!response.ok) return response;
-          
-          // Clonamos la respuesta pero cambiamos el header Content-Type
-          const newHeaders = new Headers(response.headers);
-          newHeaders.set('Content-Type', 'application/javascript');
-          
-          return response.blob().then(blob => {
-            return new Response(blob, {
+          // Forzamos el tipo MIME correcto para que el navegador no bloquee el módulo
+          const headers = new Headers(response.headers);
+          headers.set('Content-Type', 'application/javascript');
+          return response.text().then(text => {
+            return new Response(text, {
               status: response.status,
               statusText: response.statusText,
-              headers: newHeaders
+              headers: headers
             });
           });
         })
-        .catch(err => {
-          console.error('SW fetch failed:', err);
-          return fetch(event.request);
-        })
+        .catch(err => fetch(event.request))
     );
   } else {
     event.respondWith(fetch(event.request));
