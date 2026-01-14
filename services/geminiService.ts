@@ -1,9 +1,19 @@
 
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const getAIClient = () => {
+  const apiKey = process.env.API_KEY;
+  if (!apiKey) return null;
+  return new GoogleGenAI({ apiKey });
+};
 
 export async function getHistoricalAnalysis(country: string, context: string) {
+  const ai = getAIClient();
+  if (!ai) {
+    console.warn("API_KEY no detectada. Asegúrate de que las variables de entorno estén configuradas.");
+    return "El análisis por IA requiere una clave de API configurada.";
+  }
+
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
@@ -16,6 +26,6 @@ export async function getHistoricalAnalysis(country: string, context: string) {
     return response.text;
   } catch (error) {
     console.error("Error fetching analysis:", error);
-    return "No se pudo obtener el análisis en este momento.";
+    return "No se pudo obtener el análisis en este momento debido a un error en el servicio.";
   }
 }
